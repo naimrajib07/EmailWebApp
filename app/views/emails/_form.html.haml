@@ -1,0 +1,24 @@
+= form_for @email do |f|
+  - if @email.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@email.errors.count, "error")} prohibited this email from being saved:"
+      %ul
+        - @email.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+
+    = f.hidden_field :sender_id, :value => current_user.id
+  .field
+    = f.label :email_to
+    = f.email_field :email_to
+  .field
+    = f.hidden_field :email_from, :value => current_user.email
+  %div{:style => "width:100%"}
+    = f.label :email_subject
+    = f.text_area :email_subject,  :cols => 20, :rows => 1
+  .field
+    = f.label :email_body
+    = f.text_area :email_body
+  .actions
+    = f.submit 'Save'

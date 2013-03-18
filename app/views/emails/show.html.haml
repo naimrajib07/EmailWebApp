@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Sender:
+  = @email.sender_id
+%p
+  %b Email to:
+  = @email.email_to
+%p
+  %b Email from:
+  = @email.email_from
+%p
+  %b Email subject:
+  = @email.email_subject
+%p
+  %b Email body:
+  = @email.email_body
+
+= link_to 'Edit', edit_email_path(@email)
+\|
+= link_to 'Back', emails_path
