@@ -20,5 +20,11 @@
   .field
     = f.label :email_body
     = f.text_area :email_body
+
+    
   .actions
     = f.submit 'Save'
+
+  %script
+    $(function()
+    {CKEDITOR.replace( 'email_email_body' );});
