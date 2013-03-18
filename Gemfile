@@ -42,6 +42,11 @@ group :test do
   gem "database_cleaner", ">= 0.8.0"
 end
 
+group :production do
+  gem 'heroku'
+  gem 'pg'
+end
+
 
 
 # To use ActiveModel has_secure_password
