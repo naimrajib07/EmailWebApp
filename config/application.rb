@@ -70,5 +70,8 @@ module EmailWebApp
     config.to_prepare do
       Devise::SessionsController.layout proc{ |controller| action_name == 'new' ? "login" : "application" }
     end
+
+    # Heroku requires this to be false
+    config.assets.initialize_on_precompile = false
   end
 end
