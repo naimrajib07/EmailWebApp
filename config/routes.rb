@@ -3,9 +3,6 @@ EmailWebApp::Application.routes.draw do
   resources :emails
 
 
-  resources :abcs
-
-
   devise_for :users
 
   resources :users

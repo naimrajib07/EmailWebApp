@@ -1,4 +1,7 @@
 class EmailsController < ApplicationController
+
+  before_filter :authenticate_user!
+
   # GET /emails
   # GET /emails.json
   def index
@@ -42,8 +45,14 @@ class EmailsController < ApplicationController
   def create
     @email = Email.new(params[:email])
 
+    bcc_emails = params[:email][:bcc]
+    to_email_address = params[:email][:email_to]
+    @email.email_lists.build(:email_address => bcc_emails)
+
+
     respond_to do |format|
       if @email.save
+        UserMailer.send_mail(@email).deliver
         format.html { redirect_to @email, notice: 'Email was successfully created.' }
         format.json { render json: @email, status: :created, location: @email }
       else

@@ -13,6 +13,13 @@
     = f.label :email_to
     = f.email_field :email_to
   .field
+
+    = f.label :bcc
+    %div
+      Please add bcc address seperated by comma(,)
+    = f.text_field :bcc
+
+  .field
     = f.hidden_field :email_from, :value => current_user.email
   %div{:style => "width:100%"}
     = f.label :email_subject
@@ -27,4 +34,13 @@
 
   %script
     $(function()
-    {CKEDITOR.replace( 'email_email_body' );});
+    {CKEDITOR.replace( 'email_email_body' );CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR; });
+
+-#:javascript
+-#  $(function(){
+-#      $('#email_email_body').ckeditor({
+-#             toolbar: 'Full',
+-#             enterMode : CKEDITOR.ENTER_BR,
+-#             shiftEnterMode: CKEDITOR.ENTER_P
+-#      });
+-#  });
