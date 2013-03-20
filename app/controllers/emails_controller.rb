@@ -5,7 +5,7 @@ class EmailsController < ApplicationController
   # GET /emails
   # GET /emails.json
   def index
-    @emails = Email.all
+    @emails = current_user.sending_emails
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class EmailsController < ApplicationController
   # GET /emails/1
   # GET /emails/1.json
   def show
-    @email = Email.find(params[:id])
+    @email = current_user.sending_emails
 
     respond_to do |format|
       format.html # show.html.erb
