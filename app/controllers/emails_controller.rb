@@ -16,7 +16,7 @@ class EmailsController < ApplicationController
   # GET /emails/1
   # GET /emails/1.json
   def show
-    @email = current_user.sending_emails
+    @email =  Email.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
