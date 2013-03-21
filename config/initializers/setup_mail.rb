@@ -6,8 +6,7 @@ ActionMailer::Base.smtp_settings = {
     :domain => "www.nascenia.com",
     :user_name => "do-not-reply@nascenia.com",
     :password => "12nascenia3",
-    :authentication => "plain",
-    :enable_starttls_auto => true
+    :authentication => "plain"
 }
 
 Mail.register_interceptor(DevelopmentMailInterceptor) if Rails.env.development?
