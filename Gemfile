@@ -9,6 +9,7 @@ gem 'rails', '3.2.11'
 
 gem 'bootstrap-sass'
 gem "devise", ">= 2.1.2"
+gem "paperclip", "~> 3.0"
 gem 'jquery-rails'
 gem 'mysql2'
 gem 'haml-rails'
