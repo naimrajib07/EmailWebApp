@@ -13,6 +13,7 @@ gem "paperclip", "~> 3.0"
 gem 'jquery-rails'
 gem 'mysql2'
 gem 'haml-rails'
+gem 'roadie' # form sending html email
 
 # Gems used only for assets and not required
 # in production environments by default.
