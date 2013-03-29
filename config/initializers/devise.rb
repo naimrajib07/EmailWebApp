@@ -84,6 +84,31 @@ Devise.setup do |config|
   # Setup a.html.haml pepper to generate the encrypted password.
   # config.pepper = "62dca5149222833e16d9631f322aa1606c156468156c212906d5d59748999f487c5a53cc655d19422a1dcb0518b9e6aadbe0a1b0d00500e6316ab4dbbfd1dde8"
 
+  # ==> Configuration for :invitable
+  # The period the generated invitation token is valid, after
+  # this period, the invited resource won't be able to accept the invitation.
+  # When invite_for is 0 (the default), the invitation won't expire.
+  # config.invite_for = 2.weeks
+
+  # Number of invitations users can send.
+  # - If invitation_limit is nil, there is no limit for invitations, users can
+  # send unlimited invitations, invitation_limit column is not used.
+  # - If invitation_limit is 0, users can't send invitations by default.
+  # - If invitation_limit n > 0, users can send n invitations.
+  # You can change invitation_limit column for some users so they can send more
+  # or less invitations, even with global invitation_limit = 0
+  # Default: nil
+  # config.invitation_limit = 5
+
+  # The key to be used to check existing users when sending an invitation
+  # and the regexp used to test it when validate_on_invite is not set.
+  # config.invite_key = {:email => /\A[^@]+@[^@]+\z/}
+  # config.invite_key = {:email => /\A[^@]+@[^@]+\z/, :username => nil}
+
+  # Flag that force a record to be valid before being actually invited
+  # Default: false
+  # config.validate_on_invite = true
+
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
   # confirming his account. For instance, if set to 2.days, the user will be
@@ -111,7 +136,8 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  config.remember_for = 2.weeks
+  #config.remember_for = 2.weeks
+  Devise::TRUE_VALUES << ["on"]
 
   # If true, extends the user's remember period when remembered via cookie.
   # config.extend_remember_period = false
