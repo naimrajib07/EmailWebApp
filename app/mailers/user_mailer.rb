@@ -1,6 +1,8 @@
 class UserMailer < ActionMailer::Base
   #default from:  "test@emailwebapp.com"
 
+
+
   def send_mail(email)
     emailer_name = email.email_to.split("@")
     email_with_name = "'#{emailer_name[0]}' <#{email.email_to}>"

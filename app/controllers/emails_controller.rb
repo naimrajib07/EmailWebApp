@@ -43,12 +43,9 @@ class EmailsController < ApplicationController
   # POST /emails
   # POST /emails.json
   def create
+
     @email = Email.new(params[:email])
-
-    bcc_emails = params[:email][:bcc]
-    to_email_address = params[:email][:email_to]
     @email.email_lists.build(:email_address => bcc_emails)
-
 
     respond_to do |format|
       if @email.save

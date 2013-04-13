@@ -25,7 +25,7 @@
     = f.file_field  :email_attachment
   %div{:style => "width:100%"}
     = f.label :email_subject
-    = f.text_area :email_subject,  :cols => 20, :rows => 1
+    = raw f.text_area :email_subject,  :cols => 20, :rows => 1
   .field
     = f.label :email_body
     = f.text_area :email_body
@@ -36,7 +36,7 @@
 
   %script
     $(function()
-    {CKEDITOR.replace( 'email_email_body' );CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR; });
+    {CKEDITOR.replace( 'email_email_body' );CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR; CKEDITOR.config.clipboard_defaultContentType = 'html';});
 
 -#:javascript
 -#  $(function(){
