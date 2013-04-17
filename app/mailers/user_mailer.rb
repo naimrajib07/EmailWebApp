@@ -22,15 +22,28 @@ class UserMailer < ActionMailer::Base
 
   def self.smtp_settings
     #options = YAML.load_file("#{Rails.root}/config/mailers.yml")[Rails.env]['exception_notifier']
-    @@smtp_settings = {
-        :address => $user.first.address,
-        :port => $user.first.port.to_i,
-        :domain => $user.first.domain,
-        :user_name => $user.first.user_name,
-        :password => $user.first.password,
-        :authentication => $user.first.authentication,
+    if $user.present?
+      @@smtp_settings = {
+          :address => $user.first.address,
+          :port => $user.first.port.to_i,
+          :domain => $user.first.domain,
+          :user_name => $user.first.user_name,
+          :password => $user.first.password,
+          :authentication => $user.first.authentication,
+          :enable_starttls_auto => true
+      }
+    else
+      @@smtp_settings = {
+        :address => "traderline.pt",
+        :port => 25,
+        :domain => "www.traderline.pt",
+        :user_name => "newslettertest@traderline.pt",
+        :password => "news2013letter",
+        :authentication => :login,
         :enable_starttls_auto => true
-    }  if $user.present?
+      }
+    end
+
   end
   # Override the deliver! method so that we can reset our custom smtp server settings
   def deliver!(mail = @mail)
