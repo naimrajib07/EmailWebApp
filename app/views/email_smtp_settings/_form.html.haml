@@ -1,0 +1,31 @@
+= form_for @email_smtp_setting do |f|
+  - if @email_smtp_setting.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@email_smtp_setting.errors.count, "error")} prohibited this email_smtp_setting from being saved:"
+      %ul
+        - @email_smtp_setting.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.hidden_field :user_id, :value => current_user.id
+  .field
+    = f.label :user_name
+    = f.text_field :user_name
+  .field
+    = f.label :password
+    = f.text_field   :password
+  .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :port
+    = f.text_field :port
+  .field
+    = f.label :domain
+    = f.text_field :domain
+  .field
+    = f.label :authentication
+    = f.select  :authentication, EmailSmtpSetting::AUTHENTICATION, :include_blank => "Select Authentication"
+  .actions
+    = f.submit 'Save'
+authentication

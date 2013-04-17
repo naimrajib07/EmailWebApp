@@ -1,0 +1,16 @@
+%p
+  %b Address:
+  = @email_smtp_setting.address
+%p
+  %b Port:
+  = @email_smtp_setting.port
+%p
+  %b Domain:
+  = @email_smtp_setting.domain
+%p
+  %b User name:
+  = @email_smtp_setting.user_name
+
+= link_to 'Edit', edit_email_smtp_setting_path(@email_smtp_setting)
+\|
+= link_to 'Back', email_smtp_settings_path

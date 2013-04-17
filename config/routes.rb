@@ -1,5 +1,12 @@
 EmailWebApp::Application.routes.draw do
 
+  resources :email_smtp_settings do
+    collection do
+      get :activate_smtp
+    end
+  end
+
+
   resources :emails
 
 

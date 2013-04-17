@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :sending_emails, :class_name => "Email", :foreign_key => "sender_id", :dependent => :destroy
+  has_many :email_smtp_settings, :dependent => :destroy
 end
