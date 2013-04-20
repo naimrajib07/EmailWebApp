@@ -35,21 +35,15 @@
   $(document).ready(function() {
       $('#SMTP_setting').change(function() {
           var val = $(this).val();
-          alert(val);
-          console.log(val);
           $.ajax({
            url:"#{activate_smtp_email_smtp_settings_url}",
            dataType: "script",
            data: {"setting_id": val},
            type: "get",
            success: function(){
-            console.log("here===============");
            },
            error: function(){
-            console.log("error================");
            }
           });
-          //alert(val);
-          //$('option[value=' + val + ']', this).val('changed');
       });
   });
