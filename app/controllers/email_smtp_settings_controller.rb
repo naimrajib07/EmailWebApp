@@ -87,7 +87,9 @@ class EmailSmtpSettingsController < ApplicationController
 
     if @email_smtp_setting.present?
       @prev_smtp = EmailSmtpSetting.find_by_status(true)
-      @prev_smtp.update_attributes(:status => false)
+      if @prev_smtp.present?
+        @prev_smtp.update_attributes(:status => false)
+      end
       @email_smtp_setting.update_attributes(:status => true)
     end
 
