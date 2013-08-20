@@ -48,7 +48,7 @@ class UserMailer < ActionMailer::Base
     if @@current_user_settings.present?
       @@smtp_settings = {
           :address => @@current_user_settings[:address],
-          :port => @@current_user_settingst[:port].to_i,
+          :port => @@current_user_settings[:port].to_i,
           :domain => @@current_user_settings[:domain],
           :user_name =>@@current_user_settings[:user_name],
           :password => @@current_user_settings[:password],
