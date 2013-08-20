@@ -50,8 +50,9 @@ class EmailsController < ApplicationController
 
     respond_to do |format|
       if @email.save
-        $user = current_user.email_smtp_settings.active_setting if current_user.email_smtp_settings.present?
-        UserMailer.send_mail(@email).deliver
+        #$user = current_user.email_smtp_settings.active_setting if current_user.email_smtp_settings.present?
+        user=current_user
+        UserMailer.send_mail(@email, user).deliver
         format.html { redirect_to @email, notice: 'Email was successfully created.' }
         format.json { render json: @email, status: :created, location: @email }
       else
