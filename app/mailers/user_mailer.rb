@@ -1,15 +1,13 @@
 class UserMailer < ActionMailer::Base
   #default from:  "test@emailwebapp.com"
 
-  attr_accessor :current_user_settings
-
   def send_mail(email, user)
 
     if user.present?
       setting = get_current_user_active_smtp_setting(user)
 
       if setting.present?
-        @current_user_settings =   {
+        @@current_user_settings =   {
             :address => setting.address,
             :port => setting.port.to_i,
             :domain => setting.domain,
@@ -19,7 +17,7 @@ class UserMailer < ActionMailer::Base
             :enable_starttls_auto => true
         }
       else
-        @current_user_settings = {}
+        @@current_user_settings = {}
       end
     end
 
@@ -28,7 +26,7 @@ class UserMailer < ActionMailer::Base
     attachments["#{email.email_attachment_file_name}"] = File.read(email.email_attachment.path) if email.email_attachment.present?
     @msg_body = email.email_body
 
-    if @current_user_settings.present?
+    if @@current_user_settings.present?
       with_custom_smtp_settings do
         mail(:to => email_with_name, :from => email.email_from, :bcc => email.bcc, :subject => email.email_subject)
       end
@@ -47,14 +45,14 @@ class UserMailer < ActionMailer::Base
 
   def self.smtp_settings
     #options = YAML.load_file("#{Rails.root}/config/mailers.yml")[Rails.env]['exception_notifier']
-    if @current_user_settings.present?
+    if @@current_user_settings.present?
       @@smtp_settings = {
-          :address => @current_user_settings[:address],
-          :port => @current_user_settingst[:port].to_i,
-          :domain => @current_user_settings[:domain],
-          :user_name =>@current_user_settings[:user_name],
-          :password => @current_user_settings[:password],
-          :authentication => @current_user_settings[:authentication],
+          :address => @@current_user_settings[:address],
+          :port => @@current_user_settingst[:port].to_i,
+          :domain => @@current_user_settings[:domain],
+          :user_name =>@@current_user_settings[:user_name],
+          :password => @@current_user_settings[:password],
+          :authentication => @@current_user_settings[:authentication],
           :enable_starttls_auto => true
       }
     else
