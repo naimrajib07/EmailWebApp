@@ -12,7 +12,7 @@ class UserMailer < ActionMailer::Base
         @current_user_settings =   {
             :address => setting.address,
             :port => setting.port.to_i,
-            :domain => setting.first.domain,
+            :domain => setting.domain,
             :user_name => setting.user_name,
             :password => setting.password,
             :authentication => setting.authentication,
