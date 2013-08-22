@@ -1,6 +1,7 @@
 class UserMailer < ActionMailer::Base
   #default from:  "test@emailwebapp.com"
 
+
   def send_mail(email, user)
 
     if user.present?
@@ -38,7 +39,7 @@ class UserMailer < ActionMailer::Base
 
 
   def get_current_user_active_smtp_setting(user)
-      user.email_smtp_settings.active_setting.first
+    user.email_smtp_settings.active_setting.first
   end
 
 
@@ -60,8 +61,8 @@ class UserMailer < ActionMailer::Base
           :address => "traderline.pt",
           :port => 25,
           :domain => "www.traderline.pt",
-          :user_name => "newslettertest@traderline.pt",
-          :password => "news2013letter",
+          :user_name => "newsletter@traderline.pt",
+          :password => "jc%5I988",
           :authentication => :login,
           :enable_starttls_auto => true
       }
@@ -88,5 +89,4 @@ class UserMailer < ActionMailer::Base
     @@smtp_settings = @_temp_smtp_settings
     @_temp_smtp_settings = nil
   end
-
 end
