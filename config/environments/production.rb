@@ -67,4 +67,15 @@ EmailWebApp::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'emailwebapp.herokuapp.com' }
 
+  ActionMailer::Base.smtp_settings = {
+      :address => "traderline.pt",
+      :port => 25,
+      :domain => "www.traderline.pt",
+      :user_name => "newsletter@traderline.pt",
+      :password => "jc%5I988",
+      :authentication => :login,
+      :enable_starttls_auto => true
+  }
+
+
 end
